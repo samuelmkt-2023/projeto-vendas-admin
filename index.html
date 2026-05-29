@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 PROJETO VENDAS — Painel Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ───────────── SETUP TOKEN ───────────── -->
+  <div id="setup-token" class="container">
+    <h1>🔒 PROJETO VENDAS — Painel Admin</h1>
+    <p class="lead">Conecte ao seu GitHub para gerenciar clientes.</p>
+
+    <div class="card">
+      <h2>Configuração</h2>
+
+      <label for="repo-input">Repo de licenças (formato: usuario/repo):</label>
+      <input type="text" id="repo-input"
+             placeholder="samuelmkt-2023/projeto-vendas-licencas"
+             value="samuelmkt-2023/projeto-vendas-licencas">
+
+      <label for="token-input">Personal Access Token (PAT — READ-WRITE):</label>
+      <input type="password" id="token-input"
+             placeholder="github_pat_11... (cole aqui na hora)">
+      <small class="hint">
+        Token NUNCA fica salvo nem trafega pra fora do seu navegador.
+        Só vive na sessão atual.
+      </small>
+
+      <div class="row">
+        <label class="checkbox">
+          <input type="checkbox" id="lembrar-token">
+          Lembrar nesta sessão (até fechar a aba)
+        </label>
+      </div>
+
+      <button onclick="conectar()" class="btn-primary">Conectar</button>
+
+      <p id="conn-status" class="status-msg"></p>
+    </div>
+  </div>
+
+  <!-- ───────────── PAINEL PRINCIPAL ───────────── -->
+  <div id="painel" class="container hidden">
+    <div class="header">
+      <div>
+        <h1>🎬 PROJETO VENDAS — Clientes</h1>
+        <p id="status" class="lead"></p>
+      </div>
+      <div class="header-actions">
+        <button onclick="recarregar()" class="btn-secondary">🔄 Recarregar</button>
+        <button onclick="logout()" class="btn-danger">🚪 Sair</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <span><b id="contador-users">0</b> cliente(s) cadastrado(s)</span>
+        <button onclick="abrirNovoUsuario()" class="btn-primary">
+          ➕ Novo Cliente
+        </button>
+      </div>
+
+      <table id="tabela-users">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>HWID</th>
+            <th>Status</th>
+            <th>Criado</th>
+            <th>Expira</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ───────────── MODAL NOVO USUARIO ───────────── -->
+  <div id="modal-novo" class="modal hidden">
+    <div class="modal-content">
+      <h2>➕ Novo Cliente</h2>
+
+      <label for="novo-email">Email:</label>
+      <input type="email" id="novo-email"
+             placeholder="cliente@email.com">
+
+      <label for="novo-senha">Senha (gerada aleatória):</label>
+      <div class="row-input">
+        <input type="text" id="novo-senha" readonly>
+        <button onclick="gerarSenha()" class="btn-secondary">🎲 Gerar</button>
+        <button onclick="copiarSenha()" class="btn-secondary">📋 Copiar</button>
+      </div>
+
+      <label for="novo-expira">Expira em (opcional, formato YYYY-MM-DD):</label>
+      <input type="date" id="novo-expira">
+      <small class="hint">
+        Deixe em branco pra "nunca expira".
+        Pra teste de 24h, escolha amanhã.
+        Pra 7 dias, escolha +7 dias.
+        Pra 30 dias, +30 dias.
+      </small>
+
+      <p id="novo-status" class="status-msg"></p>
+
+      <div class="modal-actions">
+        <button onclick="fecharModal('modal-novo')" class="btn-secondary">
+          Cancelar
+        </button>
+        <button onclick="criarUsuario()" class="btn-primary">
+          Criar Cliente
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────── MODAL VINCULAR HWID ───────────── -->
+  <div id="modal-hwid" class="modal hidden">
+    <div class="modal-content">
+      <h2>🔓 Vincular HWID</h2>
+      <p>Cliente: <code id="hwid-email"></code></p>
+      <p>Cole o HWID que o cliente te mandou:</p>
+
+      <input type="text" id="novo-hwid" placeholder="ABCD1234EFGH5678"
+             style="font-family: monospace; font-size: 16px;
+                    text-transform: uppercase;">
+
+      <p id="hwid-status" class="status-msg"></p>
+
+      <div class="modal-actions">
+        <button onclick="fecharModal('modal-hwid')" class="btn-secondary">
+          Cancelar
+        </button>
+        <button onclick="salvarHwid()" class="btn-primary">
+          Vincular
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
