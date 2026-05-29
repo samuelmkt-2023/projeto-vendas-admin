@@ -1,0 +1,339 @@
+/* ============================================================
+   style.css — PROJETO VENDAS Painel Admin
+   Tema escuro minimalista, mobile-friendly.
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+  background: #0f0f1a;
+  color: #e0e0e0;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.hidden { display: none !important; }
+
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.lead {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.hint {
+  display: block;
+  color: #777;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── CARD ── */
+.card {
+  background: #1a1a2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* ── INPUTS ── */
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #b0b0c0;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+label:first-child { margin-top: 0; }
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+  width: 100%;
+  background: #0f0f1a;
+  border: 1px solid #2a2a3e;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+input[readonly] {
+  background: #14141f;
+  color: #b0b0c0;
+  font-family: 'Consolas', 'Monaco', monospace;
+  letter-spacing: 0.5px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.row-input {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.row-input input { flex: 1; }
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  color: #b0b0c0;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.checkbox input { width: auto; }
+
+/* ── BOTOES ── */
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+button:hover { opacity: 0.85; }
+button:active { transform: translateY(1px); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary {
+  background: #4a90e2;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #2a2a3e;
+  color: #e0e0e0;
+}
+
+.btn-danger {
+  background: #c0392b;
+  color: #ffffff;
+}
+
+/* ── STATUS MESSAGES ── */
+.status-msg {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999;
+  min-height: 16px;
+}
+
+.status-msg.ok { color: #2ecc71; }
+.status-msg.err { color: #e74c3c; }
+
+/* ── TOOLBAR ── */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── TABELA ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #2a2a3e;
+}
+
+table th {
+  background: #14141f;
+  color: #b0b0c0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+table tr:hover { background: #14141f; }
+
+table code {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12px;
+  background: #0f0f1a;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #4a90e2;
+}
+
+/* ── BADGES ── */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-on {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.badge-off {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.badge-pending {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+/* ── BOTOES DE ACAO NA TABELA ── */
+.acoes {
+  display: flex;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.acoes button {
+  padding: 4px 8px;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid #2a2a3e;
+  color: #e0e0e0;
+}
+
+.acoes button:hover {
+  background: #2a2a3e;
+}
+
+/* ── MODAL ── */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-content {
+  background: #1a1a2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  margin-bottom: 16px;
+}
+
+.modal-content code {
+  font-family: 'Consolas', 'Monaco', monospace;
+  background: #0f0f1a;
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: #4a90e2;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* ── MOBILE RESPONSIVO ── */
+@media (max-width: 640px) {
+  h1 { font-size: 18px; }
+
+  table {
+    font-size: 11px;
+  }
+
+  table th,
+  table td {
+    padding: 8px 6px;
+  }
+
+  .acoes {
+    flex-wrap: wrap;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
